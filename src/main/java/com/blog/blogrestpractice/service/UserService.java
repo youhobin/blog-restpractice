@@ -4,6 +4,7 @@ import com.blog.blogrestpractice.config.auth.PrincipalDetail;
 import com.blog.blogrestpractice.domain.user.User;
 import com.blog.blogrestpractice.domain.user.UserRepository;
 import com.blog.blogrestpractice.dto.user.UserSaveRequestDto;
+import com.blog.blogrestpractice.dto.user.UserUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,11 @@ public class UserService {
     }
 
     @Transactional
-    public Long update(User user, PrincipalDetail principalDetail) {
-        User userEntity = userRepository.findById(user.getId());
-        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()), user.getNickname());
+    public Long update(UserUpdateRequestDto userUpdateRequestDto, PrincipalDetail principalDetail) {
+        User userEntity = userRepository.findById(userUpdateRequestDto.getId());
+        String updatePassword = userUpdateRequestDto.getPassword();
+        String updateNickname = userUpdateRequestDto.getNickname();
+        userEntity.update(bCryptPasswordEncoder.encode(updatePassword), updateNickname);
         principalDetail.setUser(userEntity);
         return userEntity.getId();
     }

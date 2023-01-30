@@ -3,6 +3,7 @@ package com.blog.blogrestpractice.controller.api;
 import com.blog.blogrestpractice.config.auth.PrincipalDetail;
 import com.blog.blogrestpractice.domain.user.User;
 import com.blog.blogrestpractice.dto.user.UserSaveRequestDto;
+import com.blog.blogrestpractice.dto.user.UserUpdateRequestDto;
 import com.blog.blogrestpractice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,7 +21,7 @@ public class UserApiController {
     }
 
     @PutMapping("/api/v1/user")
-    public Long update(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        return userService.update(user, principalDetail);
+    public Long update(@RequestBody UserUpdateRequestDto userUpdateRequestDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+        return userService.update(userUpdateRequestDto, principalDetail);
     }
 }
