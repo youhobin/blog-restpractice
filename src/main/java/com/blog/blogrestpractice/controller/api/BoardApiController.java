@@ -5,9 +5,7 @@ import com.blog.blogrestpractice.dto.board.BoardSaveRequestDto;
 import com.blog.blogrestpractice.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -18,5 +16,11 @@ public class BoardApiController {
     @PostMapping("/api/v1/board")
     public Long save(@RequestBody BoardSaveRequestDto boardSaveRequestDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         return boardService.save(boardSaveRequestDto, principalDetail.getUser());
+    }
+
+    @DeleteMapping("/api/v1/board/{id}")
+    public Long deleteById(@PathVariable("id") Long id) {
+        boardService.deleteById(id);
+        return id;
     }
 }

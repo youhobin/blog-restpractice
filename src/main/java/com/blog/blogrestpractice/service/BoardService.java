@@ -27,4 +27,14 @@ public class BoardService {
     public List<Board> findAll() {
         return boardRepository.findAll();
     }
+
+    public Board findOne(Long id) {
+        return boardRepository.findOne(id);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        Board board = boardRepository.findOne(id);
+        boardRepository.delete(board);
+    }
 }
