@@ -34,4 +34,8 @@ public class Board extends BaseTimeEntity {
         this.title = updateTitle;
         this.content = updateContent;
     }
+
+    public void updateCount(int count) {
+        this.count = count + 1;
+    }
 }

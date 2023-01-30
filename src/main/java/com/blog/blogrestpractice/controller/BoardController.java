@@ -22,6 +22,7 @@ public class BoardController {
     @GetMapping("/board/{id}")
     public String detail(@PathVariable("id") Long id, Model model) {
         Board board = boardService.findOne(id);
+        boardService.updateCount(id);
         model.addAttribute("board", board);
         return "layout/board/board-detail";
     }
