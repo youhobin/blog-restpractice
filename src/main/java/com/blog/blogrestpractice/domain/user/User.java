@@ -35,8 +35,16 @@ public class User {
     @NotNull
     private Role role;
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void encodePassword(String password) {
         this.password = password;
     }
 
+    public void update(String encodePassword, String nickname) {
+        this.password = encodePassword;
+        this.nickname = nickname;
+    }
 }

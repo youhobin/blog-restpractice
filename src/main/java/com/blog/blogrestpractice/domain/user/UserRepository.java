@@ -36,4 +36,8 @@ public class UserRepository {
     public void deleteAll() {
         em.clear();
     }
+
+    public User findById(Long id) {
+        return em.find(User.class, id);
+    }
 }
