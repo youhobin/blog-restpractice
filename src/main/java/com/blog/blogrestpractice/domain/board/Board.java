@@ -1,5 +1,6 @@
 package com.blog.blogrestpractice.domain.board;
 
+import com.blog.blogrestpractice.domain.BaseTimeEntity;
 import com.blog.blogrestpractice.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
-public class Board {
+public class Board extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "board_id")

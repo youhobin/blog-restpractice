@@ -1,5 +1,6 @@
 package com.blog.blogrestpractice.domain.user;
 
+import com.blog.blogrestpractice.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "user_id")
