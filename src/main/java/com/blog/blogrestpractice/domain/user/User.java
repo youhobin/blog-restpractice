@@ -35,4 +35,8 @@ public class User {
     @NotNull
     private Role role;
 
+    public void encodePassword(String password) {
+        this.password = password;
+    }
+
 }
