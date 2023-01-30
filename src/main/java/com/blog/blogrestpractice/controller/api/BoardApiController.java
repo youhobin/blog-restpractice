@@ -2,6 +2,7 @@ package com.blog.blogrestpractice.controller.api;
 
 import com.blog.blogrestpractice.config.auth.PrincipalDetail;
 import com.blog.blogrestpractice.dto.board.BoardSaveRequestDto;
+import com.blog.blogrestpractice.dto.board.BoardUpdateRequestDto;
 import com.blog.blogrestpractice.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,5 +23,10 @@ public class BoardApiController {
     public Long deleteById(@PathVariable("id") Long id) {
         boardService.deleteById(id);
         return id;
+    }
+
+    @PutMapping("/api/v1/board/{id}")
+    public Long update(@PathVariable("id") Long id, @RequestBody BoardUpdateRequestDto boardUpdateRequestDto) {
+        return boardService.update(id, boardUpdateRequestDto);
     }
 }

@@ -4,6 +4,7 @@ import com.blog.blogrestpractice.domain.board.Board;
 import com.blog.blogrestpractice.domain.board.BoardRepository;
 import com.blog.blogrestpractice.domain.user.User;
 import com.blog.blogrestpractice.dto.board.BoardSaveRequestDto;
+import com.blog.blogrestpractice.dto.board.BoardUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,14 @@ public class BoardService {
     public void deleteById(Long id) {
         Board board = boardRepository.findOne(id);
         boardRepository.delete(board);
+    }
+
+    @Transactional
+    public Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto) {
+        Board board = boardRepository.findOne(id);
+        String updateTitle = boardUpdateRequestDto.getTitle();
+        String updateContent = boardUpdateRequestDto.getContent();
+        board.update(updateTitle, updateContent);
+        return board.getId();
     }
 }
